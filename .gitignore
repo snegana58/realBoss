@@ -2,5 +2,5 @@
 
 # dependencies
 /node_modules
-#/config/dev.js
-/config
+/config/dev.js
+.env
