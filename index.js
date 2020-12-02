@@ -14,11 +14,14 @@ const app = express();
 app.use(
       cookieSession({
             //for how long its gonna stay inside the server
-         maxAge: 30 * 24 * 60 * 60 * 1000
+         maxAge: 30 * 24 * 60 * 60 * 1000,
            // key for cookey
            keys:[keys.cookieKey]        
       })
 );
+
+app.use(passport.initialize());
+app.use(passport.session());
 
 require("./routes/authRoutes")(app);
 
