@@ -24,8 +24,7 @@ passport.use(
       clientSecret: keys.googleClientSecret,
       callbackURL: "/auth/google/callback",
       proxy: true
-      //for prod
-      // callbackURL: "https://realboss.herokuapp.com/auth/google/callback"
+      
     },
     async (accessToken, refreshToken, profile, done) => {
       const existingUser = await User.findOne({ googleId: profile.id })
