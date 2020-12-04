@@ -40,7 +40,7 @@ module.exports = (app) => {
        {
         $inc: { [choice]: 1 },
         $set: { "recipients.$.responded": true},
-        lastResponded: new Date()
+        lastResponded: new Date(),
         }).exec();//execute and not sending  to DB!
       })
       .value();
