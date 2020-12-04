@@ -18,7 +18,7 @@ module.exports = (app) => {
     const p = new Path("/api/surveys/:surveyId/:choice");
 
 
-    //Playgrounds lodadsh chain/
+    
       _.chain(req.body)
       .map(({ email, url }) => {
         const match = p.test(new URL(url).pathname);
@@ -31,7 +31,7 @@ module.exports = (app) => {
       //run over just for these not all elements
       .each()(({surveyId, email, choice }) =>{ 
         Survey.updateOne({
-        //in just DB _id
+        
         _id: surveyId,
         recipients: {
           $elementMatch: {email: email, responded: false}
