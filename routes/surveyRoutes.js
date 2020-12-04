@@ -18,8 +18,8 @@ module.exports = (app) => {
     const p = new Path("/api/surveys/:surveyId/:choice");
 
 
-    //Playgrounds/
-    const events = _.chain(req.body)
+    //Playgrounds lodadsh chain/
+      _.chain(req.body)
       .map(({ email, url }) => {
         const match = p.test(new URL(url).pathname);
         if (match) {
@@ -28,10 +28,21 @@ module.exports = (app) => {
       })
       .compact()
       .uniqBy("email", "surveyId")
+      //run over every single element
+      .each()(event =>{ 
+        Survey.updateOne({
+        //in just DB _id
+        _id: surveyId,
+        recipients: {
+          $elementMatch: {email: email, responded: false}
+        }
+      }, {
+        $inc: { [choice]: 1 },
+        $set: { "recipients.$.responded": true}
+        }).exec();//execute and not sending to DB!
+      })
       .value();
-
-    console.log(events);
-
+ 
     res.send({});
   });
 
