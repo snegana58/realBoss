@@ -28,18 +28,19 @@ module.exports = (app) => {
       })
       .compact()
       .uniqBy("email", "surveyId")
-      //run over every single element
-      .each()(event =>{ 
+      //run over just for these not all elements
+      .each()(({surveyId, email, choice }) =>{ 
         Survey.updateOne({
         //in just DB _id
         _id: surveyId,
         recipients: {
           $elementMatch: {email: email, responded: false}
         }
-      }, {
+      }, 
+       {
         $inc: { [choice]: 1 },
         $set: { "recipients.$.responded": true}
-        }).exec();//execute and not sending to DB!
+        }).exec();//execute and not sending  to DB!
       })
       .value();
  
