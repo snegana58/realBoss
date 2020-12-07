@@ -11,10 +11,11 @@ const Survey = mongoose.model("surveys");
 
 module.exports = (app) => {
   app.get("/api/surveys", requireLogin, async (req, res) => {
-      const surveys = await Survey.find({ _user: req.user.id });
-      //send response isnot working 
-      res.send(survey);
+    const surveys = await Survey.find({ _user: req.user.id }).select({
+      recipients: false,
+    });
 
+    res.send(surveys);
   });
 
   app.get("/api/surveys/:surveyId/:choice", (req, res) => {
@@ -33,7 +34,6 @@ module.exports = (app) => {
       })
       .compact()
       .uniqBy("email", "surveyId")
-      //run over just for these not all elements
       .each(({ surveyId, email, choice }) => {
         Survey.updateOne(
           {
