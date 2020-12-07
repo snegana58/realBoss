@@ -5,13 +5,14 @@ import * as actions from "../actions";
 
 class Payments extends Component {
   render() {
+    
     return (
       <StripeCheckout
         name="Real Boss"
         description="$5 is for 5 email credits"
         amount={500}
         token={token => this.props.handleToken(token)}
-        stripeKey={process.env.REACT_APP_STRIPE_KEY}
+        stripeKey={process.env.REACT_APP_STRIPE_SECRET_KEY}
       >
 
       <button className="btn">
@@ -19,7 +20,9 @@ class Payments extends Component {
       </button>
       </StripeCheckout>
     );
+    
   }
 }
 
 export default connect(null, actions)(Payments);
+
