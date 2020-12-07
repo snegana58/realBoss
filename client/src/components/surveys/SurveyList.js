@@ -6,13 +6,45 @@ class SurveyList extends Component {
       componentDidMount() {
             this.props.fetchSurveys();
       }
-   
-      render(){
-          return(
-           <div>
-                 SurveyList
-           </div>
-          );
+
+
+      renderSurveyss() {
+
+            return this.props.surveys.map(survey => {
+                  return (
+
+                        <div className="card darken-1" key={survey.id} >
+
+                              <div className="card-content">
+                                    <span className="card-title">{survey.title}</span>
+                                    <p>
+                                          {survey.body}
+                                    </p>
+                                    <p className="right">
+
+                                          Sent On :{new Date(survey.dateSent).toLocaleDateString()}
+                                    </p>
+                              </div>
+
+                             <div className="card-action">
+                             <a> Yes Votes: {survey.yes}</a>                     
+                             <a> No Votes: {survey.no}</a> 
+                                   
+
+                             </div>
+
+                        </div>
+                  );
+
+            });
+
+      }
+      render() {
+            return (
+                  <div>
+                        {this.renderSurveyss()}
+                  </div>
+            );
 
       }
 
@@ -20,7 +52,7 @@ class SurveyList extends Component {
 
 function mapStateToProps({ surveys }) {
 
-      return{ surveys: surveys };
+      return { surveys: surveys };
 }
 
-export default connect(mapStateToProps, {fetchSurveys} )(SurveyList);
+export default connect(mapStateToProps, { fetchSurveys })(SurveyList);
