@@ -20,3 +20,5 @@ an exceptional experience.
 
 # How to install
 
+### npm Install
+### npm run start:dev
