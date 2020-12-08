@@ -8,9 +8,8 @@ an exceptional experience.
 
 # Technologies:
 <ul>-React
--Nodeja
+-Nodejs
 -HTML 
--CSS 
 -JavaScript 
 -Express 
 -Google OAuth
