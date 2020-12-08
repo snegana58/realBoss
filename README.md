@@ -6,7 +6,7 @@ by sending emails and measuring the voice of the customer in order to take actio
 
 an exceptional experience.
 
-#Technologies:
+# Technologies:
 <ul>-React
 -Nodeja
 -HTML 
@@ -16,5 +16,7 @@ an exceptional experience.
 -Google OAuth
 <ul/>
 
-#How to install
+
+
+# How to install
 
