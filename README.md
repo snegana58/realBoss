@@ -10,8 +10,11 @@ an exceptional experience.
 <ul>-React
 -Nodeja
 -HTML 
--CSS -
+-CSS 
 -JavaScript 
 -Express 
 -Google OAuth
 <ul/>
+
+#How to install
+
