@@ -1,3 +1,4 @@
+// SurveyFormReview shows users their form inputs for review
 import _ from "lodash";
 import React from "react";
 import { connect } from "react-redux";
